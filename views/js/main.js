@@ -530,8 +530,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var cols = 8;
   var s = 256;
-  // Reduced the number of pizzas to as many as visible on the screens.
-  for (var i = 0; i < 40; i++) {
+  var h = self.innerHeight;
+  
+  // Calculate dynamically, and thus reduced, the number of pizzas needed to fill the screen, based on browser window resolution.
+  var numberOfPizzas = h / s * cols;
+  
+  for (var i = 0; i < numberOfPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

@@ -25,11 +25,11 @@ To get started, click on Click or download, Download ZIP and open the frontend-n
 
 #### Optimizations in index.html:
 
-1. Minified CSS and JS.
+1. Embedded CSS to HTML and minified JS.
 2. Made script async to prevent it from blocking the parser and used a media print type so as print.css is not required to render the page.
 3. Removed web fonts and analytics from being loaded, as these scripts had an impact on page load.
 4. Reduced image sizes and changed format where approprtiate.
-5. Overall, achieved a PageSpeed score of 90/100 for mobile and desktop.
+5. Overall, achieved a PageSpeed score of 92/100 for mobile and 93/100 desktop.
 
 ### Part 2: Getting Rid of Jank
 
@@ -40,8 +40,8 @@ Applied optimizations to views/js/main.js make views/pizza.html render at 60fps 
 - Split the for loop in updatePositions function into two different loops, to separate layout from style calculation.
 - Saved items length and scrolling phases to separate variables and used these in the for loop, avoiding thus querying the DOM each time.
 - Moved items value outside the function so as to query items after they've been created but before they're needed. Also, defined the items globally, so it can be accessed by the updatePositions function.
-- Defined items within the event listener so that DOM is queried only when the DOM content is loaded. Also, switched to getElementsByClass as this is more time efficient.
-- Reduced the number of created pizzas in the event listener from 200 to 40, as no more than these are ever visible to my screen.
+- Defined items within the event listener so that DOM is queried only when the DOM content is loaded. Also, switched to getElementsByClass because it's faster.
+- Reduced the number of created pizzas in the event listener, by calculating dynamically the number of pizzas only needed to fill the screen.
 
 #### Computational Efficiency
 
